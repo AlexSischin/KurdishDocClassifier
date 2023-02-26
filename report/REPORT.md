@@ -29,11 +29,17 @@ Train an ML algorithm to classify Kurdish Documents. The goal is to make it as a
 interpretation is irrelevant.
 
 Compare the following algorithms:
+
 - Softmax regression (SR)
 - Support Vector Machine (SVM)
 - Classification and Regression Trees (CART)
 - Random forest (RF)
 
 Use cross-validation to compare models and parameters.
+
+# Development
+
+We will use the dataset containing TF-IDF scores for each word. It has 13202 columns. First column is the target, other
+are features. We will not perform feature selection and engineering because it's out of the scope of this project.
 
 
