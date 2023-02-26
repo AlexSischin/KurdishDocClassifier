@@ -23,3 +23,17 @@ There are four datasets in the collection:
 
 _For more info see: dataset/readme.txt_
 
+# Goal
+
+Train an ML algorithm to classify Kurdish Documents. The goal is to make it as accurate as possible, result
+interpretation is irrelevant.
+
+Compare the following algorithms:
+- Softmax regression (SR)
+- Support Vector Machine (SVM)
+- Classification and Regression Trees (CART)
+- Random forest (RF)
+
+Use cross-validation to compare models and parameters.
+
+
