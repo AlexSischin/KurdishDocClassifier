@@ -43,9 +43,10 @@ def train_LR(X_train, X_test, y_train, y_test):
 
 def train_SVM(X_train, X_test, y_train, y_test):
     svc = LinearSVC(max_iter=10000, random_state=42)
-    parameters = {'C': np.logspace(1e-10, 100, 50)}
+    parameters = {'C': np.logspace(-5, 0, 100)}
     clf = GridSearchCV(svc, parameters, scoring='accuracy', n_jobs=-1, cv=5, verbose=3)
     clf.fit(X_train, y_train)
+    print(f'Best params:\n{clf.best_params_}')
 
     test(clf, X_train, X_test, y_train, y_test)
 
@@ -72,8 +73,8 @@ def main():
     X_test_transformed = pipe.transform(X_test)
 
     # train_LR(X_train_transformed, X_test_transformed, y_train, y_test)
-    # train_SVM(X_train_transformed, X_test_transformed, y_train, y_test)
-    train_CART(X_train_transformed, X_test_transformed, y_train, y_test)
+    train_SVM(X_train_transformed, X_test_transformed, y_train, y_test)
+    # train_CART(X_train_transformed, X_test_transformed, y_train, y_test)
 
 
 if __name__ == '__main__':

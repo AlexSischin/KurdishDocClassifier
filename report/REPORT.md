@@ -73,7 +73,11 @@ scheme which is more efficient than _OvO_. Also, our data is balances, so _OvR_ 
 train_SVM
 ```
 
-Accuracy: 94%
+| Param | Best value |
+|-------|------------|
+| C     | 0.06       |
+
+Accuracy: 95%
 
 Accuracy (train): 100%
 
