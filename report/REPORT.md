@@ -30,7 +30,7 @@ interpretation is irrelevant.
 
 Compare the following algorithms:
 
-- Softmax regression (SR)
+- Logistic regression (LR)
 - Support Vector Machine (SVM)
 - Classification and Regression Trees (CART)
 - Random forest (RF)
