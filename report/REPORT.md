@@ -5,14 +5,14 @@ It is a set of corpus contains about 4,007 articles talking about the following 
 
 | №   | Category  | Count |
 |-----|-----------|-------|
-| 1   | religion  | 500   |
-| 2   | sport     | 500   |
-| 3   | health    | 501   |
-| 4   | education | 500   |
-| 5   | art       | 501   |
-| 6   | social    | 502   |
-| 7   | style     | 502   |
-| 8   | economy   | 501   |
+| 0   | religion  | 500   |
+| 1   | sport     | 500   |
+| 2   | health    | 501   |
+| 3   | education | 500   |
+| 4   | art       | 501   |
+| 5   | social    | 502   |
+| 6   | style     | 502   |
+| 7   | economy   | 501   |
 
 There are four datasets in the collection:
 
