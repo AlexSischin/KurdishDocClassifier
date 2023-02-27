@@ -76,3 +76,23 @@ train_SVM
 Accuracy: 94%
 
 Accuracy (train): 100%
+
+## Classification and Regression Trees
+
+![img_2.png](img_2.png)
+
+```text
+train_CART
+```
+
+| Param                 | Best value |
+|-----------------------|------------|
+| criterion             | gini       |
+| max_depth             | 400        |
+| min_impurity_decrease | 0          |
+| min_samples_leaf      | 1          |
+| min_samples_split     | 2          |
+
+Accuracy: 83%
+
+Accuracy (train): 100%

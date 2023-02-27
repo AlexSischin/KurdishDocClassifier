@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import MaxAbsScaler
 from sklearn.svm import LinearSVC
+from sklearn.tree import DecisionTreeClassifier
 
 from analysis_utils import visualize_confusion_matrix
 from sparse_utils import read_arff
@@ -49,6 +50,20 @@ def train_SVM(X_train, X_test, y_train, y_test):
     test(clf, X_train, X_test, y_train, y_test)
 
 
+def train_CART(X_train, X_test, y_train, y_test):
+    dtc = DecisionTreeClassifier(random_state=42)
+    params = {'criterion': ['gini', 'entropy'],
+              'max_depth': np.linspace(400, 600, 5, dtype=int),
+              'min_samples_leaf': np.linspace(1, 10, 3, dtype=int),
+              'min_samples_split': np.linspace(2, 10, 3, dtype=int),
+              'min_impurity_decrease': np.linspace(0, 0.01, 3, dtype=int)}
+    clf = GridSearchCV(dtc, params, scoring='accuracy', n_jobs=-1, cv=5, verbose=3)
+    clf.fit(X_train, y_train)
+    print(f'Best params:\n{clf.best_params_}')
+
+    test(clf, X_train, X_test, y_train, y_test)
+
+
 def main():
     X_train, X_test, y_train, y_test = get_data()
 
@@ -57,7 +72,8 @@ def main():
     X_test_transformed = pipe.transform(X_test)
 
     # train_LR(X_train_transformed, X_test_transformed, y_train, y_test)
-    train_SVM(X_train_transformed, X_test_transformed, y_train, y_test)
+    # train_SVM(X_train_transformed, X_test_transformed, y_train, y_test)
+    train_CART(X_train_transformed, X_test_transformed, y_train, y_test)
 
 
 if __name__ == '__main__':
