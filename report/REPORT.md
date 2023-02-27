@@ -39,7 +39,8 @@ Use cross-validation to compare models and parameters.
 
 # Development
 
-We will use the dataset containing TF-IDF scores for each word. It has 13202 columns. First column is the target, other
-are features. We will not perform feature selection and engineering because it's out of the scope of this project.
+We will use the dataset containing **TF-IDF** scores for each word. It has 13202 columns. First column is the target,
+other are features. We will **not perform feature selection and engineering** because it's out of the scope of this
+project.
 
-
+Target is categorical and balanced, so we'll use **accuracy** metric for model selection.
