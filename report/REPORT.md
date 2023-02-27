@@ -55,7 +55,24 @@ Confusion matrix:
 ![img.png](img.png)
 
 ```text
-train_logistic_regression
+train_LR
 ```
 
 Accuracy: 94%
+
+Accuracy (train): 100%
+
+## Support vector machine
+
+We will use _LinearSVC_ because the correlation between text class and words must not be very complex, and it uses _OvR_
+scheme which is more efficient than _OvO_. Also, our data is balances, so _OvR_ is totally applicable.
+
+![img_1.png](img_1.png)
+
+```text
+train_SVM
+```
+
+Accuracy: 94%
+
+Accuracy (train): 100%
