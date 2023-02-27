@@ -44,3 +44,18 @@ other are features. We will **not perform feature selection and engineering** be
 project.
 
 Target is categorical and balanced, so we'll use **accuracy** metric for model selection.
+
+## Logistic regression
+
+We'll use _LogisticRegressionCV_ with _liblinear_ solver. It doesn't support warm-starting, but it is recommended for
+highly dimensional data.
+
+Confusion matrix:
+
+![img.png](img.png)
+
+```text
+train_logistic_regression
+```
+
+Accuracy: 94%
