@@ -40,6 +40,7 @@ def train_LR(X_train, X_test, y_train, y_test):
     clf.fit(X_train, y_train)
 
     test(clf, X_train, X_test, y_train, y_test)
+    return clf
 
 
 def train_SVM(X_train, X_test, y_train, y_test):
@@ -50,6 +51,7 @@ def train_SVM(X_train, X_test, y_train, y_test):
     print(f'Best params:\n{clf.best_params_}')
 
     test(clf, X_train, X_test, y_train, y_test)
+    return clf
 
 
 def train_CART(X_train, X_test, y_train, y_test):
@@ -64,6 +66,7 @@ def train_CART(X_train, X_test, y_train, y_test):
     print(f'Best params:\n{clf.best_params_}')
 
     test(clf, X_train, X_test, y_train, y_test)
+    return clf
 
 
 def train_RF(X_train, X_test, y_train, y_test):
@@ -76,6 +79,7 @@ def train_RF(X_train, X_test, y_train, y_test):
     print(f'Best params:\n{clf.best_params_}')
 
     test(clf, X_train, X_test, y_train, y_test)
+    return clf
 
 
 def main():
