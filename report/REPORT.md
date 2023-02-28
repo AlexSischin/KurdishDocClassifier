@@ -35,7 +35,7 @@ Compare the following algorithms:
 - Classification and Regression Trees (CART)
 - Random forest (RF)
 
-Use cross-validation to compare models and parameters.
+Use cross-validation to pick parameters.
 
 # Development
 
