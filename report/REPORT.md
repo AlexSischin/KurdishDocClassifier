@@ -25,7 +25,7 @@ _For more info see: dataset/readme.txt_
 
 # Goal
 
-Train an ML algorithm to classify Kurdish Documents. The goal is to make it as accurate as possible, result
+Train an ML algorithm to classify Kurdish Documents. The only criteria for model comparison is accuracy, result
 interpretation is irrelevant.
 
 Compare the following algorithms:
