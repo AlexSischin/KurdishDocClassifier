@@ -64,3 +64,13 @@ def visualize_confusion_matrix(ax: Axes, conf: np.ndarray):
     for (i, j), z in np.ndenumerate(conf):
         if z != 0:
             ax.text(j, i, '{:.0f}'.format(z), ha='center', va='center')
+
+
+def visualize_learning_curve(ax: Axes, train_sizes, train_scores, test_scores, metric: str | None = 'Accuracy'):
+    train_scores = np.mean(train_scores, axis=1)
+    test_scores = np.mean(test_scores, axis=1)
+    ax.set_title('Learning curve')
+    ax.set_xlabel('Training set size')
+    ax.set_ylabel(metric)
+    ax.plot(train_sizes, train_scores, color='blue', label='Train')
+    ax.plot(train_sizes, test_scores, color='orange', label='Test')
