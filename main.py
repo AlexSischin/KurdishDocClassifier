@@ -1,15 +1,16 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import scipy as sp
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegressionCV
 from sklearn.metrics import confusion_matrix
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split, GridSearchCV, learning_curve
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import MaxAbsScaler
 from sklearn.svm import LinearSVC
 from sklearn.tree import DecisionTreeClassifier
 
-from analysis_utils import visualize_confusion_matrix
+from analysis_utils import visualize_confusion_matrix, visualize_learning_curve
 from sparse_utils import read_arff
 
 
@@ -82,6 +83,21 @@ def train_RF(X_train, X_test, y_train, y_test):
     return clf
 
 
+def plot_learning_curve(X_train, X_test, y_train, y_test):
+    X = sp.sparse.vstack([X_train, X_test])
+    y = np.concatenate([y_train, y_test])
+    clf = LinearSVC(C=0.06, max_iter=10000, random_state=42)
+    train_sizes, train_scores, test_scores = learning_curve(
+        clf, X, y, train_sizes=np.linspace(0, 1, 50, dtype=float)[1:], cv=10, scoring='accuracy', n_jobs=-1, verbose=3,
+        shuffle=True, random_state=42
+    )
+
+    fig, ax = plt.subplots()
+    visualize_learning_curve(ax, train_sizes, train_scores, test_scores)
+    plt.legend()
+    plt.show()
+
+
 def main():
     X_train, X_test, y_train, y_test = get_data()
 
@@ -92,7 +108,8 @@ def main():
     # train_LR(X_train_transformed, X_test_transformed, y_train, y_test)
     # train_SVM(X_train_transformed, X_test_transformed, y_train, y_test)
     # train_CART(X_train_transformed, X_test_transformed, y_train, y_test)
-    train_RF(X_train_transformed, X_test_transformed, y_train, y_test)
+    # train_RF(X_train_transformed, X_test_transformed, y_train, y_test)
+    plot_learning_curve(X_train_transformed, X_test_transformed, y_train, y_test)
 
 
 if __name__ == '__main__':

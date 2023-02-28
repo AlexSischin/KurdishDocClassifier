@@ -136,3 +136,41 @@ train_RF
 Accuracy: 88%
 
 Accuracy (train): 93%
+
+# Results analysis
+
+| Place | Model | Accuracy | Accuracy (train) |
+|-------|-------|----------|------------------|
+| 1     | SVM   | 95%      | 100%             |
+| 2     | LR    | 94%      | 100%             |
+| 3     | RF    | 88%      | 93%              |
+| 4     | CART  | 83%      | 100%             |
+
+_DTs_ performed not so good because they accumulate error when split continuous data into discrete pieces. They're
+better candidates for data with categorical values.
+
+_SVM_ and _LR_ have similar results because they both fit a linear hyperplane. However, _SVM_, besides optimizing
+accuracy, optimizes decision boundary margin, which makes it less susceptible to over-fitting. That's why they have the
+same train accuracy, but test accuracy is slightly better for _SVM_.
+
+Regardless, _SVM_ and _LR_ have a decent accuracy, they have an obvious **over-fit**. The parameters for these models
+have been fine-tuned using cross-validation, so this performance is their max with the current dataset. The reason of
+high variance in this case is that there are very few unique values for each dimension in the dataset, so hyperplane is
+very sensitive to new data. This, in turn, is caused by sparsity and extreme dimensionality of the data.
+
+One way to solve this issue is to **enlarge the data set several times**. From the plot below we can assume that 5-time
+increase of the dataset would halve the error:
+
+![img_4.png](img_4.png)
+
+```text
+plot_learning_curve
+```
+
+The other way to improve accuracy is to perform **dimensionality reduction**. One might want to filter irrelevant
+features, compress them or engineer new ones. Unfortunately, this is out of the scope of this project. The goal was to
+build LR, SVM, CART and RF models, using CV. This is done and, in fact, we've got the same results as the authors of
+this dataset [^1].
+
+[^1]: _Tarik A. Rashid, Arazo M. Mustafa and Ari M. Saeed, 2017."A Robust Categorization System for Kurdish Sorani Text
+Documents". Information Technology Journal, 16: 27-34._
