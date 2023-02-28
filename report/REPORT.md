@@ -174,3 +174,13 @@ this dataset [^1].
 
 [^1]: _Tarik A. Rashid, Arazo M. Mustafa and Ari M. Saeed, 2017."A Robust Categorization System for Kurdish Sorani Text
 Documents". Information Technology Journal, 16: 27-34._
+
+# Use cases
+
+The models we've developed can be used for:
+- spam filtering
+- fraud and abuse detection
+- email categorization
+- document organizing
+
+and many others.
