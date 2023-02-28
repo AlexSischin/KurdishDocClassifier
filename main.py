@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegressionCV
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split, GridSearchCV
@@ -65,6 +66,18 @@ def train_CART(X_train, X_test, y_train, y_test):
     test(clf, X_train, X_test, y_train, y_test)
 
 
+def train_RF(X_train, X_test, y_train, y_test):
+    rfc = RandomForestClassifier(n_jobs=1, random_state=42)
+    params = {'n_estimators': np.linspace(75, 125, 4, dtype=int),
+              'max_depth': np.linspace(100, 300, 6, dtype=int),
+              'min_samples_leaf': [2, 3, 4, 5]}
+    clf = GridSearchCV(rfc, params, scoring='accuracy', n_jobs=-1, cv=5, verbose=3)
+    clf.fit(X_train, y_train)
+    print(f'Best params:\n{clf.best_params_}')
+
+    test(clf, X_train, X_test, y_train, y_test)
+
+
 def main():
     X_train, X_test, y_train, y_test = get_data()
 
@@ -73,8 +86,9 @@ def main():
     X_test_transformed = pipe.transform(X_test)
 
     # train_LR(X_train_transformed, X_test_transformed, y_train, y_test)
-    train_SVM(X_train_transformed, X_test_transformed, y_train, y_test)
+    # train_SVM(X_train_transformed, X_test_transformed, y_train, y_test)
     # train_CART(X_train_transformed, X_test_transformed, y_train, y_test)
+    train_RF(X_train_transformed, X_test_transformed, y_train, y_test)
 
 
 if __name__ == '__main__':

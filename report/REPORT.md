@@ -100,3 +100,39 @@ train_CART
 Accuracy: 83%
 
 Accuracy (train): 100%
+
+## Random forest
+
+**Iteration 1**:
+
+| Param             | Best value |
+|-------------------|------------|
+| criterion         | gini       |
+| max_depth         | 300        |
+| max_samples       | None       |
+| min_samples_leaf  | 2          |
+| min_samples_split | 2          |
+| n_estimators      | 100        |
+
+We've established some optimal params: such as _criterion_, _max_samples_, _min_samples_split_, but it would be nice to
+fine-tune other params because their best values happened to be on the edge of range. Ideally, we should repeat
+cross-validation for all the values we previously tested, because new hyper-param values may influence optimal values of
+others, but we better ignore this micro optimization in favor of speed.
+
+**Iteration 2**:
+
+| Param             | Best value |
+|-------------------|------------|
+| max_depth         | 140        |
+| min_samples_leaf  | 2          |
+| n_estimators      | 125        |
+
+![img_3.png](img_3.png)
+
+```text
+train_RF
+```
+
+Accuracy: 88%
+
+Accuracy (train): 93%
